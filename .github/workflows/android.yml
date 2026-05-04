@@ -59,7 +59,7 @@ jobs:
           # Navigate to the hxcpp project directory
           cd $(haxelib libpath hxcpp)/project
           # Build the internal hxcpp binaries using neko
-          neko build.n
+          neko build.n android -release
 
       - name: Remove Previous NDLLs
         run: |

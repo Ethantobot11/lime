@@ -47,6 +47,20 @@ jobs:
           export ANDROID_SETUP=true
           haxelib run lime setup android -alias -y -nocffi -eval
 
+      - name: Build HXCPP Tools
+        run: |
+          # Navigate to the hxcpp tools directory
+          cd $(haxelib libpath hxcpp)/tools/hxcpp
+          # Compile the actual command-line tool (hxcpp.n / hxcpp.exe)
+          haxe compile.hxml
+          
+      - name: Build HXCPP Binaries
+        run: |
+          # Navigate to the hxcpp project directory
+          cd $(haxelib libpath hxcpp)/project
+          # Build the internal hxcpp binaries using neko
+          neko build.n
+
       - name: Remove Previous NDLLs
         run: |
           rm -rf ./ndll

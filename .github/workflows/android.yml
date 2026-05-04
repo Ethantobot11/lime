@@ -30,7 +30,7 @@ jobs:
         uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
-          ndk-version: r29
+          ndk-version: r21c
 
       - name: Install Haxe dependencies
         run: |
@@ -59,7 +59,7 @@ jobs:
           # Navigate to the hxcpp project directory
           cd $(haxelib libpath hxcpp)/project
           # Build the internal hxcpp binaries using neko
-          neko build.n android -release
+          neko build.n android
 
       - name: Remove Previous NDLLs
         run: |
